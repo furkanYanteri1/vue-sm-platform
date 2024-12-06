@@ -2,7 +2,7 @@
   <div class="profile-card">
     <!-- Card Header -->
     <div class="card-header">
-      <div class="profile-picture"></div>
+      <img class="profile-picture" :src="avatarURL" alt="Profile Picture" />
       <div class="profile-name">{{ name }}</div>
     </div>
 
@@ -33,6 +33,7 @@ defineProps({
   location: String,
   company: String,
   website: String,
+  avatarURL: String,
 })
 </script>
   
@@ -57,7 +58,7 @@ defineProps({
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #cccccc; /* Placeholder color for profile picture */
+  object-fit: cover;
 }
 
 .profile-name {
@@ -78,7 +79,7 @@ defineProps({
 }
 
 .icon {
-  width: 20px; /* Adjust size as needed */
+  width: 20px;
   height: 20px;
 }
 
