@@ -1,11 +1,11 @@
 <template>
   <div class="profiles-grid">
-    <div class="profile-card" v-for="n in 12" :key="n"></div>
+    <ProfileCard v-for="n in 12" :key="n" />
   </div>
 </template>
   
   <script setup>
-// No logic required for now
+import ProfileCard from './ProfileCard.vue'
 </script>
   
   <style scoped>
@@ -18,12 +18,6 @@
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
-}
-
-.profile-card {
-  background-color: red;
-  height: 150px;
-  border-radius: 8px;
 }
 </style>
   
