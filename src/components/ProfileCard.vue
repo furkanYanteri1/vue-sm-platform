@@ -3,7 +3,7 @@
     <!-- Card Header -->
     <div class="card-header">
       <div class="profile-picture"></div>
-      <div class="profile-name">John Doe</div>
+      <div class="profile-name">{{ name }}</div>
     </div>
 
     <!-- Card Details -->
@@ -11,24 +11,29 @@
       <div class="card-row">
         <img src="/icon-profile-location.png" alt="Location Icon" class="icon" />
         <span class="label">Location:</span>
-        <span class="value">xxxx</span>
+        <span class="value">{{ location }}</span>
       </div>
       <div class="card-row">
         <img src="/icon-profile-company.png" alt="Company Icon" class="icon" />
         <span class="label">Company:</span>
-        <span class="value">xxxx</span>
+        <span class="value">{{ company }}</span>
       </div>
       <div class="card-row">
         <img src="/icon-profile-website.png" alt="Website Icon" class="icon" />
         <span class="label">Website:</span>
-        <span class="value">xxxx</span>
+        <span class="value">{{ website }}</span>
       </div>
     </div>
   </div>
 </template>
   
   <script setup>
-// No logic required for now
+defineProps({
+  name: String,
+  location: String,
+  company: String,
+  website: String,
+})
 </script>
   
   <style scoped>
