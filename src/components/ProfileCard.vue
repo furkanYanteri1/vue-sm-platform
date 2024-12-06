@@ -2,7 +2,11 @@
   <div class="profile-card">
     <!-- Card Header -->
     <div class="card-header">
-      <div class="profile-picture"></div>
+      <img
+        class="profile-picture"
+        src="https://randomuser.me/api/portraits/women/33.jpg"
+        alt="Profile Picture"
+      />
       <div class="profile-name">{{ name }}</div>
     </div>
 
@@ -57,7 +61,7 @@ defineProps({
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #cccccc; /* Placeholder color for profile picture */
+  object-fit: cover;
 }
 
 .profile-name {

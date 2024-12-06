@@ -13,18 +13,17 @@
   
   <script setup>
 import { ref, onMounted } from 'vue'
-import ProfileCard from './ProfileCard.vue'
+import ProfileCard from '../components/ProfileCard.vue'
+import { fetchUsersWithGender } from '../api/userService.js'
 
 const users = ref([])
 
 onMounted(async () => {
   try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/users')
-    if (!response.ok) throw new Error('Failed to fetch users')
-    users.value = await response.json()
-    console.log('Fetched Users:', users.value) // Logs the fetched user data
+    users.value = await fetchUsersWithGender()
+    console.log('Users with gender:', users.value)
   } catch (error) {
-    console.error('Error fetching users:', error)
+    console.error('Error fetching and processing users:', error)
   }
 })
 </script>
@@ -32,7 +31,7 @@ onMounted(async () => {
   <style scoped>
 .profiles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 </style>
