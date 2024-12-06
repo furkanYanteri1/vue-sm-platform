@@ -7,6 +7,7 @@
       :location="user.address.city"
       :company="user.company.name"
       :website="user.website"
+      :avatarURL="user.avatarURL"
     />
   </div>
 </template>
@@ -21,7 +22,7 @@ const users = ref([])
 onMounted(async () => {
   try {
     users.value = await fetchUsersWithGender()
-    console.log('Users with gender:', users.value)
+    console.log('Users with gender and avatar:', users.value)
   } catch (error) {
     console.error('Error fetching and processing users:', error)
   }

@@ -2,11 +2,7 @@
   <div class="profile-card">
     <!-- Card Header -->
     <div class="card-header">
-      <img
-        class="profile-picture"
-        src="https://randomuser.me/api/portraits/women/33.jpg"
-        alt="Profile Picture"
-      />
+      <img class="profile-picture" :src="avatarURL" alt="Profile Picture" />
       <div class="profile-name">{{ name }}</div>
     </div>
 
@@ -37,6 +33,7 @@ defineProps({
   location: String,
   company: String,
   website: String,
+  avatarURL: String,
 })
 </script>
   
@@ -82,7 +79,7 @@ defineProps({
 }
 
 .icon {
-  width: 20px; /* Adjust size as needed */
+  width: 20px;
   height: 20px;
 }
 

@@ -5,8 +5,9 @@ export async function fetchUsersWithGender() {
   if (!response.ok) throw new Error('Failed to fetch users')
   const userData = await response.json()
 
-  // Process each user, fetching their gender
+  // Process each user
   for (const user of userData) {
+    // Determine gender
     if (user.name) {
       const firstName = user.name.split(' ')[0]
       try {
@@ -17,8 +18,14 @@ export async function fetchUsersWithGender() {
     } else {
       user.gender = 'unknown'
     }
+
+    // Compute avatarURL based on gender and user.id
+    // Fallback: if gender is 'female', use 'women'; else use 'men'.
+    const genderPath = user.gender === 'female' ? 'women' : 'men'
+    // Note: randomuser.me supports IDs from 0-99. If `user.id` is out of that range,
+    // you might want to mod it, e.g., user.id % 100, but for this example, we'll assume the IDs are suitable.
+    user.avatarURL = `https://randomuser.me/api/portraits/${genderPath}/${user.id}.jpg`
   }
 
-  // Return the fully processed array
   return userData
 }
