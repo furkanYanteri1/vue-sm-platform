@@ -11,8 +11,8 @@
     />
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 import { ref, onMounted } from 'vue'
 import ProfileCard from '../components/ProfileCard.vue'
 import { fetchUsersWithGender } from '../api/userService.js'
@@ -28,12 +28,11 @@ onMounted(async () => {
   }
 })
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .profiles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 </style>
-  
