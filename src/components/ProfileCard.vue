@@ -26,8 +26,8 @@
     </div>
   </div>
 </template>
-  
-  <script setup>
+
+<script setup>
 defineProps({
   name: String,
   location: String,
@@ -36,8 +36,8 @@ defineProps({
   avatarURL: String,
 })
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .profile-card {
   background-color: #ffffff;
   border-radius: 8px;
@@ -92,4 +92,3 @@ defineProps({
   color: #333333;
 }
 </style>
-  
