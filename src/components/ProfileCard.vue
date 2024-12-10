@@ -62,6 +62,11 @@ defineProps({
   flex-direction: column;
   gap: 12px;
   font-family: 'Poppins', sans-serif;
+  transition: box-shadow 0.2s ease;
+}
+
+.profile-card:hover {
+  box-shadow: 0px 0px 48px 0px #55555540;
 }
 
 .card-header {
@@ -108,6 +113,7 @@ defineProps({
   font-weight: 500;
   color: #313e50;
 }
+
 .card-row {
   display: flex;
   flex-direction: column;
