@@ -8,6 +8,8 @@
       :company="user.company.name"
       :website="user.website"
       :avatarURL="user.avatarURL"
+      :email="user.email"
+      :phone="user.phone"
     />
   </div>
 </template>
