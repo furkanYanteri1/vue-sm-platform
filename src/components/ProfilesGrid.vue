@@ -47,7 +47,7 @@ onMounted(() => {
   line-height: 20px;
   text-align: left;
   color: #26303e;
-  margin: 20px 0 20px 2px;
+  margin: 28px 0px 20px 2px;
 }
 
 .profiles-grid {
