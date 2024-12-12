@@ -37,6 +37,7 @@ onMounted(() => {
 .profiles-grid-container {
   position: relative;
   padding-left: 10px;
+  padding-right: 8px;
 }
 
 .header {
