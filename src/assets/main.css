@@ -1,7 +1,4 @@
 #app {
-  max-width: 1280px; /* Optional: You can keep this if you want to limit the width */
-  margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
 }
 
@@ -21,19 +18,16 @@ a,
 
 @media (min-width: 1024px) {
   body {
-    /* Remove the flex and center the layout, as it's conflicting */
     display: block;
     padding: 0; /* Removes padding from all sides */
-    margin: 0; /* Optional: Removes any margin if present */
+    margin: 0; /* Removes any margin if present */
     height: 100%; /* Ensures it takes full height */
     width: 100%; /* Ensures it takes full width */
   }
 
   #app {
-    /* Remove grid layout */
-    display: block;
     padding: 0; /* Removes padding from all sides */
-    margin: 0; /* Optional: Removes any margin if present */
+    margin: 0; /* Removes any margin if present */
     height: 100%; /* Ensures it takes full height */
     width: 100%; /* Ensures it takes full width */
   }
