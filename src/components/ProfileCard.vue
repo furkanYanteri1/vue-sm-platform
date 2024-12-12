@@ -56,7 +56,6 @@ defineProps({
 .profile-card {
   background-color: #ffffff;
   border-radius: 12px;
-  border: 1px solid #d8d9dd;
   padding: 16px;
   display: flex;
   flex-direction: column;

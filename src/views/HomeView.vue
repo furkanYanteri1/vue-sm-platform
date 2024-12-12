@@ -20,7 +20,6 @@ import ProfilesGrid from '../components/ProfilesGrid.vue'
   display: flex;
   height: 100vh;
   overflow: hidden; /* Prevents scrolling of the entire page */
-  border: 2px solid blue;
 }
 
 .sidebar {
@@ -28,7 +27,6 @@ import ProfilesGrid from '../components/ProfilesGrid.vue'
 }
 
 .content {
-  border: 1px solid red;
   flex-grow: 1; /* Ensures the content takes up the remaining space */
   width: 100%; /* Make sure it stretches to occupy the full horizontal space */
   overflow-y: auto; /* Enables scrolling for the right section */
