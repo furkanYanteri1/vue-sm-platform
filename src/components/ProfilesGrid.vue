@@ -13,17 +13,14 @@
     />
   </div>
 </template>
-
 <script setup>
 import { computed, onMounted } from 'vue'
 import ProfileCard from '../components/ProfileCard.vue'
 import { useProfilesStore } from '../stores/profilesStore.js'
 
 const profilesStore = useProfilesStore()
-
 // Computed property for users from the store
 const users = computed(() => profilesStore.users)
-
 // Fetch profiles on mount
 onMounted(() => {
   if (!users.value.length) {
@@ -31,7 +28,6 @@ onMounted(() => {
   }
 })
 </script>
-
 <style scoped>
 .profiles-grid {
   display: grid;
