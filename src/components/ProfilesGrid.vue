@@ -15,18 +15,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import ProfileCard from '../components/ProfileCard.vue'
-import { fetchUsersWithGender } from '../api/userService.js'
+import { useProfilesStore } from '../stores/profilesStore.js'
 
-const users = ref([])
+const profilesStore = useProfilesStore()
 
-onMounted(async () => {
-  try {
-    users.value = await fetchUsersWithGender()
-    console.log('Users with gender and avatar:', users.value)
-  } catch (error) {
-    console.error('Error fetching and processing users:', error)
+// Computed property for users from the store
+const users = computed(() => profilesStore.users)
+
+// Fetch profiles on mount
+onMounted(() => {
+  if (!users.value.length) {
+    profilesStore.fetchProfiles()
   }
 })
 </script>
