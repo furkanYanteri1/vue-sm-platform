@@ -29,9 +29,7 @@
   justify-content: space-between;
   width: 260px;
   height: 100%;
-  padding-top: 24px 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  padding: 24px 0;
   background-color: #f4f4f4;
   border-right: 1px solid #e0e0e0; /* Optional: light border for separation */
 }
@@ -60,9 +58,15 @@
   flex-grow: 1;
 }
 
+.sidebar-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust height as needed to fit the image */
+}
+
 .sidebar-bottom img {
-  width: 80px;
-  margin-top: 1rem;
-  align-self: center;
+  width: 228px; /* Adjust to make the image larger */
+  height: auto; /* Maintain aspect ratio */
 }
 </style>
