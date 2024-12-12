@@ -22,12 +22,19 @@ a,
 @media (min-width: 1024px) {
   body {
     /* Remove the flex and center the layout, as it's conflicting */
-    display: block; /* Default block layout */
+    display: block;
+    padding: 0; /* Removes padding from all sides */
+    margin: 0; /* Optional: Removes any margin if present */
+    height: 100%; /* Ensures it takes full height */
+    width: 100%; /* Ensures it takes full width */
   }
 
   #app {
     /* Remove grid layout */
     display: block;
-    padding: 0 2rem;
+    padding: 0; /* Removes padding from all sides */
+    margin: 0; /* Optional: Removes any margin if present */
+    height: 100%; /* Ensures it takes full height */
+    width: 100%; /* Ensures it takes full width */
   }
 }

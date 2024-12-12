@@ -1,61 +1,38 @@
 <template>
   <div class="home-container">
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <div class="sidebar-top">
-        <ul>
-          <li>Users</li>
-        </ul>
-      </div>
-      <div class="sidebar-bottom">
-        <div class="spacer"></div>
-        <img src="/fav-icon.png" alt="Logo" />
-      </div>
-    </div>
+    <!-- Sidebar Component -->
+    <Sidebar class="sidex" />
 
     <!-- Profiles Grid Section -->
-    <ProfilesGrid />
+    <div class="content">
+      <ProfilesGrid />
+    </div>
   </div>
 </template>
 
 <script setup>
+import Sidebar from '../components/Sidebar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
 </script>
 
 <style scoped>
 .home-container {
+  border: 1px solid pink;
   display: flex;
   height: 100vh;
+  overflow: hidden; /* Prevents scrolling of the entire page */
 }
 
 .sidebar {
+  flex-shrink: 0; /* Prevents the sidebar from shrinking */
+}
+
+.content {
+  flex-grow: 1; /* Allows the content area to take up remaining space */
+  overflow-y: auto; /* Enables scrolling for the right section */
+  height: 100%; /* Ensures the content area fills the full height */
+}
+.sidex {
   border: 1px solid red;
-  width: 260px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 24px 0;
-  background-color: #f4f4f4;
-}
-
-.sidebar-top ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-top li {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.spacer {
-  flex-grow: 1;
-}
-
-.sidebar-bottom img {
-  width: 80px;
-  margin-top: 1rem;
 }
 </style>
