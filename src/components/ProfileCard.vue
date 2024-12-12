@@ -62,6 +62,7 @@ defineProps({
   gap: 12px;
   font-family: 'Poppins', sans-serif;
   transition: box-shadow 0.2s ease;
+  border: 1px solid #d8d9dd;
 }
 
 .profile-card:hover {
