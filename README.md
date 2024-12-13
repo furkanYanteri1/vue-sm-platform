@@ -7,20 +7,16 @@ Latest PR is here:
 https://github.com/furkanYanteri1/vue-sm-platform/pull/10
 
 ### Currently live here 👇
-https://wwww.furkanyanteri1.github.io/vue-sm-platform/
+https://furkanyanteri1.github.io/vue-sm-platform/
 
-## Project Setup
-
+### Project Setup
 ```sh
 npm install
 ```
-
 ### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
 ```
-
 ### Compile and Minify for Production
 
 ```sh
