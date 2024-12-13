@@ -12,6 +12,8 @@
         :avatarURL="user.avatarURL"
         :email="user.email"
         :phone="user.phone"
+        :userId="user.id"
+        @userSelected="handleUserSelected"
       />
     </div>
   </div>
@@ -31,6 +33,13 @@ onMounted(() => {
     profilesStore.fetchProfiles()
   }
 })
+
+const handleUserSelected = (userId) => {
+  // Emit event to the parent
+  emit('userSelected', userId)
+}
+
+const emit = defineEmits(['userSelected'])
 </script>
 
 <style scoped>

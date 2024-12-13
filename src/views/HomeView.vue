@@ -1,11 +1,10 @@
 <template>
   <div class="home-container">
-    <!-- Sidebar Component -->
-    <Sidebar />
+    <Sidebar :userId="selectedUserId" />
 
-    <!-- Profiles Grid Section -->
     <div class="content">
-      <ProfilesGrid />
+      <ProfilesGrid v-if="!selectedUserId" @userSelected="selectUser" />
+      <TodosList v-else :userId="selectedUserId" />
     </div>
   </div>
 </template>
@@ -13,6 +12,14 @@
 <script setup>
 import Sidebar from '../components/Sidebar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
+import TodosList from '../components/TodosList.vue'
+import { ref } from 'vue'
+
+const selectedUserId = ref(null)
+
+const selectUser = (userId) => {
+  selectedUserId.value = userId
+}
 </script>
 
 <style scoped>
@@ -28,7 +35,6 @@ import ProfilesGrid from '../components/ProfilesGrid.vue'
 
 .content {
   flex-grow: 1; /* Ensures the content takes up the remaining space */
-  width: 100%; /* Make sure it stretches to occupy the full horizontal space */
   overflow-y: auto; /* Enables scrolling for the right section */
   height: 100%; /* Ensures the content area fills the full height */
 }
