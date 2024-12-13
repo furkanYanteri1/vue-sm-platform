@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-card">
+  <div class="profile-card" @click="selectUser">
     <!-- Card Header -->
     <div class="card-header">
       <img class="profile-picture" :src="avatarURL" alt="Profile Picture" />
@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   name: String,
   location: String,
   company: String,
@@ -49,7 +49,14 @@ defineProps({
   avatarURL: String,
   email: String,
   phone: String,
+  userId: Number, // Ensure userId is passed
 })
+
+const emit = defineEmits(['userSelected'])
+
+const selectUser = () => {
+  emit('userSelected', props.userId) // Access userId directly from props
+}
 </script>
 
 <style scoped>
@@ -63,6 +70,7 @@ defineProps({
   font-family: 'Poppins', sans-serif;
   transition: box-shadow 0.2s ease;
   border: 1px solid #d8d9dd;
+  cursor: pointer;
 }
 
 .profile-card:hover {
