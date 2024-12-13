@@ -4,7 +4,8 @@
 
     <div class="content">
       <ProfilesGrid v-if="!selectedUserId" @userSelected="selectUser" />
-      <TodosList v-else :userId="selectedUserId" @goHome="goHome" />
+      <TodosList v-else-if="activeMenuItem === 'Todos'" :userId="selectedUserId" @goHome="goHome" />
+      <PostsList v-else-if="activeMenuItem === 'Posts'" :userId="selectedUserId" @goHome="goHome" />
     </div>
   </div>
 </template>
@@ -13,11 +14,14 @@
 import Sidebar from '../components/Sidebar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
 import TodosList from '../components/TodosList.vue'
-import { ref } from 'vue'
+import PostsList from '../components/PostsList.vue'
+import { ref, computed } from 'vue'
 import { useProfilesStore } from '../stores/profilesStore.js'
 
 const profilesStore = useProfilesStore()
 const selectedUserId = ref(null)
+
+const activeMenuItem = computed(() => profilesStore.activeMenuItem)
 
 const selectUser = (userId) => {
   selectedUserId.value = userId
