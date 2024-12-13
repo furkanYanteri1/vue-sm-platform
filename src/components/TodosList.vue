@@ -19,6 +19,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { fetchUserTodos } from '../api/todosService.js'
 
 const props = defineProps({
   userId: {
@@ -30,8 +31,11 @@ const props = defineProps({
 const todos = ref([])
 
 onMounted(async () => {
-  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${props.userId}/todos`)
-  todos.value = await response.json()
+  try {
+    todos.value = await fetchUserTodos(props.userId)
+  } catch (error) {
+    console.error('Error fetching user todos:', error)
+  }
 })
 </script>
 
@@ -44,7 +48,6 @@ onMounted(async () => {
 .todos-list ul {
   list-style: none;
   padding: 0;
-  color: red;
   font-size: 14px;
 }
 
