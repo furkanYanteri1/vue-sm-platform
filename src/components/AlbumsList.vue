@@ -25,6 +25,7 @@ const props = defineProps({
 })
 
 const albums = ref([])
+const emit = defineEmits(['goHome'])
 
 onMounted(async () => {
   try {
@@ -33,6 +34,10 @@ onMounted(async () => {
     console.error('Error fetching albums:', error)
   }
 })
+
+const goHome = () => {
+  emit('goHome')
+}
 </script>
 
 <style scoped>
