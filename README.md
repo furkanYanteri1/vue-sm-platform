@@ -6,7 +6,7 @@ Please check the PR's for a better understanding of the development story.
 Latest PR is here: 
 https://github.com/furkanYanteri1/vue-sm-platform/pull/10
 
-### Currently live here:
+### Currently live here 👇
 https://wwww.furkanyanteri1.github.io/vue-sm-platform/
 
 ## Project Setup
