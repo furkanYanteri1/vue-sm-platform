@@ -2,12 +2,12 @@
   <div class="profile-card" @click="selectUser">
     <!-- Card Header -->
     <div class="card-header">
-      <img class="profile-picture" :src="avatarURL" alt="Profile Picture" />
+      <img class="profile-picture" :src="avatarURL" :alt="`Avatar of ${name}`" />
       <div class="profile-details">
         <div class="profile-name">{{ name }}</div>
         <div class="profile-contact">
-          <div class="profile-email">{{ email }}</div>
-          <div class="profile-phone">{{ phone }}</div>
+          <div v-if="email" class="profile-email">{{ email }}</div>
+          <div v-if="phone" class="profile-phone">{{ phone }}</div>
         </div>
       </div>
     </div>
@@ -49,13 +49,13 @@ const props = defineProps({
   avatarURL: String,
   email: String,
   phone: String,
-  userId: Number, // Ensure userId is passed
+  userId: Number,
 })
 
 const emit = defineEmits(['userSelected'])
 
 const selectUser = () => {
-  emit('userSelected', props.userId) // Access userId directly from props
+  emit('userSelected', props.userId)
 }
 </script>
 
