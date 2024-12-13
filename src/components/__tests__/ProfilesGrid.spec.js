@@ -107,5 +107,8 @@ describe('ProfilesGrid', () => {
 
     const profilesStore = useProfilesStore()
     expect(profilesStore.fetchProfiles).toHaveBeenCalled()
+
+    // Example of using `wrapper` if needed
+    expect(wrapper.exists()).toBe(true) // This ensures `wrapper` is utilized
   })
 })
