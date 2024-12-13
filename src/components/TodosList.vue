@@ -1,7 +1,7 @@
 <template>
   <div class="todos-list">
     <!-- Back Home Header -->
-    <div class="go-home">
+    <div class="go-home" @click="goHome">
       <img src="/icon-back-home.png" alt="Back Home Icon" class="back-home-icon" />
       <h2>Go Home</h2>
     </div>
@@ -28,6 +28,8 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['goHome'])
+
 const todos = ref([])
 
 onMounted(async () => {
@@ -37,6 +39,10 @@ onMounted(async () => {
     console.error('Error fetching user todos:', error)
   }
 })
+
+const goHome = () => {
+  emit('goHome') // Emit the event to go back to the home view
+}
 </script>
 
 <style scoped>
@@ -60,6 +66,7 @@ onMounted(async () => {
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
+  cursor: pointer; /* Add pointer cursor for better UX */
 }
 
 .go-home h2 {

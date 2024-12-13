@@ -4,7 +4,7 @@
 
     <div class="content">
       <ProfilesGrid v-if="!selectedUserId" @userSelected="selectUser" />
-      <TodosList v-else :userId="selectedUserId" />
+      <TodosList v-else :userId="selectedUserId" @goHome="goHome" />
     </div>
   </div>
 </template>
@@ -19,6 +19,10 @@ const selectedUserId = ref(null)
 
 const selectUser = (userId) => {
   selectedUserId.value = userId
+}
+
+const goHome = () => {
+  selectedUserId.value = null // Reset the selected user to return to home view
 }
 </script>
 
