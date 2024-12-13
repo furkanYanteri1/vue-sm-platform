@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="sidebar-top">
       <ul>
-        <template v-if="userId">
+        <template v-if="props.userId">
           <li
             class="sidebar-list-item"
             :class="{ active: activeMenuItem === 'Todos' }"

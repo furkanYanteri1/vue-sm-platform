@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Sidebar from '../components/Sidebar.vue'
+import Sidebar from '../components/SideBar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
 import TodosList from '../components/TodosList.vue'
 import PostsList from '../components/PostsList.vue'
