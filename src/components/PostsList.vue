@@ -10,19 +10,28 @@
     <div v-for="post in posts" :key="post.id" class="post">
       <div class="post-header">
         <h3 class="post-title">{{ post.title }}</h3>
+        <button class="see-more" @click="openDialog(post)">
+          See More
+          <img src="/icon-posts-see-more.png" alt="See More Icon" class="see-more-icon" />
+        </button>
       </div>
       <p class="post-body">{{ post.body }}</p>
-      <button class="see-more">
-        See More
-        <img src="/icon-posts-see-more.png" alt="See More Icon" class="see-more-icon" />
-      </button>
     </div>
+
+    <!-- Post Dialog -->
+    <PostDialog
+      v-if="isDialogVisible"
+      :post="selectedPost"
+      :isVisible="isDialogVisible"
+      @close="closeDialog"
+    />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { fetchUserPosts } from '../api/postsService.js'
+import PostDialog from './PostDialog.vue'
 
 const props = defineProps({
   userId: {
@@ -34,6 +43,8 @@ const props = defineProps({
 const emit = defineEmits(['goHome'])
 
 const posts = ref([])
+const isDialogVisible = ref(false)
+const selectedPost = ref(null)
 
 onMounted(async () => {
   try {
@@ -45,6 +56,16 @@ onMounted(async () => {
 
 const goHome = () => {
   emit('goHome')
+}
+
+const openDialog = (post) => {
+  selectedPost.value = post
+  isDialogVisible.value = true
+}
+
+const closeDialog = () => {
+  isDialogVisible.value = false
+  selectedPost.value = null
 }
 </script>
 
@@ -75,10 +96,8 @@ const goHome = () => {
 }
 
 .post {
-  position: relative; /* Position for the container */
   border-bottom: 1px solid #e0e0e0;
   padding: 20px 0;
-  padding-right: 50px; /* Add space for the button */
 }
 
 .post-header {
@@ -94,13 +113,9 @@ const goHome = () => {
 }
 
 .see-more {
-  font-family: 'Poppins', sans-serif;
-  position: absolute; /* Place at the bottom-right */
-  right: 0;
-  bottom: 20px;
   background: none;
   border: none;
-  font-size: 14px;
+  color: #4f359b;
   font-weight: 500;
   cursor: pointer;
   display: flex;
@@ -109,8 +124,8 @@ const goHome = () => {
 }
 
 .see-more-icon {
-  width: 32px;
-  height: 32px;
+  width: 16px;
+  height: 16px;
 }
 
 .post-body {
