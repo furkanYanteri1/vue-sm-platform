@@ -9,7 +9,7 @@
     <ul>
       <li v-for="todo in todos" :key="todo.id">
         <label>
-          <input type="checkbox" :checked="todo.completed" />
+          <input type="checkbox" :checked="todo.completed" @click.prevent="preventInteraction" />
           {{ todo.title }}
         </label>
       </li>
@@ -42,6 +42,11 @@ onMounted(async () => {
 
 const goHome = () => {
   emit('goHome') // Emit the event to go back to the home view
+}
+
+// Prevent interaction with checkboxes
+const preventInteraction = (event) => {
+  event.preventDefault() // Stop the checkbox from toggling
 }
 </script>
 

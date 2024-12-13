@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <Sidebar :userId="selectedUserId" />
+    <SideBar :userId="selectedUserId" />
 
     <div class="content">
       <ProfilesGrid v-if="!selectedUserId" @userSelected="selectUser" />
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Sidebar from '../components/Sidebar.vue'
+import SideBar from '../components/SideBar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
 import TodosList from '../components/TodosList.vue'
 import PostsList from '../components/PostsList.vue'
