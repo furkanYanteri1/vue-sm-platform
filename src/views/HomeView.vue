@@ -6,6 +6,11 @@
       <ProfilesGrid v-if="!selectedUserId" @userSelected="selectUser" />
       <TodosList v-else-if="activeMenuItem === 'Todos'" :userId="selectedUserId" @goHome="goHome" />
       <PostsList v-else-if="activeMenuItem === 'Posts'" :userId="selectedUserId" @goHome="goHome" />
+      <AlbumsList
+        v-else-if="activeMenuItem === 'Albums'"
+        :userId="selectedUserId"
+        @goHome="goHome"
+      />
     </div>
   </div>
 </template>
@@ -15,6 +20,7 @@ import Sidebar from '../components/Sidebar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
 import TodosList from '../components/TodosList.vue'
 import PostsList from '../components/PostsList.vue'
+import AlbumsList from '../components/AlbumsList.vue'
 import { ref, computed } from 'vue'
 import { useProfilesStore } from '../stores/profilesStore.js'
 
@@ -25,12 +31,12 @@ const activeMenuItem = computed(() => profilesStore.activeMenuItem)
 
 const selectUser = (userId) => {
   selectedUserId.value = userId
-  profilesStore.setActiveMenuItem('Todos') // Set "Todos" as active by default
+  profilesStore.setActiveMenuItem('Todos')
 }
 
 const goHome = () => {
   selectedUserId.value = null
-  profilesStore.setActiveMenuItem('Users') // Reset to "Users" when going home
+  profilesStore.setActiveMenuItem('Users')
 }
 </script>
 
