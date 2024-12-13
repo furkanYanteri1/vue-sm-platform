@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ProfileCard from '../ProfileCard.vue'
 
@@ -61,7 +61,7 @@ describe('ProfileCard.vue', () => {
     expect(img.attributes('alt')).toBe('Avatar of John Doe')
   })
 
-  it('applies hover effects', async () => {
+  it('applies hover effectss', async () => {
     const wrapper = mount(ProfileCard, {
       props: {
         name: 'John Doe',
