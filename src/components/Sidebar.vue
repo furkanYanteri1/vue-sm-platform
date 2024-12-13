@@ -121,6 +121,7 @@ const setActiveMenu = (menuItem) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 150px; /* Adjust height as needed to fit the image */
 }
 
 .sidebar-bottom img {
