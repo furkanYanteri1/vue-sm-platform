@@ -4,7 +4,9 @@ import { fetchUsersWithGender } from '../api/userService.js'
 
 export const useProfilesStore = defineStore('profiles', () => {
   const users = ref([])
+  const activeMenuItem = ref('Users') // Users must be active by default in the sidebar
 
+  // Fetch user profiles
   const fetchProfiles = async () => {
     try {
       users.value = await fetchUsersWithGender()
@@ -14,8 +16,16 @@ export const useProfilesStore = defineStore('profiles', () => {
     }
   }
 
+  // Set active menu item
+  const setActiveMenuItem = (menuItem) => {
+    activeMenuItem.value = menuItem
+    console.log(`Active menu item set to: ${menuItem}`)
+  }
+
   return {
     users,
+    activeMenuItem,
     fetchProfiles,
+    setActiveMenuItem,
   }
 })

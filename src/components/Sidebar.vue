@@ -1,29 +1,28 @@
 <template>
   <div class="sidebar">
-    <!-- Top Section -->
     <div class="sidebar-top">
       <ul>
         <template v-if="userId">
           <li
             class="sidebar-list-item"
-            :class="{ active: activeListItem === 'todos' }"
-            @click="setActiveItem('todos')"
+            :class="{ active: activeMenuItem === 'Todos' }"
+            @click="setActiveMenu('Todos')"
           >
             <img src="/icon-sidebar-todos.png" alt="Todos Icon" class="icon" />
             <span>Todos</span>
           </li>
           <li
             class="sidebar-list-item"
-            :class="{ active: activeListItem === 'posts' }"
-            @click="setActiveItem('posts')"
+            :class="{ active: activeMenuItem === 'Posts' }"
+            @click="setActiveMenu('Posts')"
           >
             <img src="/icon-sidebar-posts.png" alt="Posts Icon" class="icon" />
             <span>Posts</span>
           </li>
           <li
             class="sidebar-list-item"
-            :class="{ active: activeListItem === 'albums' }"
-            @click="setActiveItem('albums')"
+            :class="{ active: activeMenuItem === 'Albums' }"
+            @click="setActiveMenu('Albums')"
           >
             <img src="/icon-sidebar-albums.png" alt="Albums Icon" class="icon" />
             <span>Albums</span>
@@ -32,8 +31,8 @@
         <template v-else>
           <li
             class="sidebar-list-item"
-            :class="{ active: activeListItem === 'users' }"
-            @click="setActiveItem('users')"
+            :class="{ active: activeMenuItem === 'Users' }"
+            @click="setActiveMenu('Users')"
           >
             <img src="/icon-sidebar-users.png" alt="Users Icon" class="icon" />
             <span>Users</span>
@@ -42,10 +41,7 @@
       </ul>
     </div>
 
-    <!-- Spacer -->
     <div class="spacer"></div>
-
-    <!-- Bottom Section -->
     <div class="sidebar-bottom">
       <img src="/n2m-bottom.png" alt="N2Mobil Logo" />
     </div>
@@ -53,7 +49,8 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
+import { useProfilesStore } from '../stores/profilesStore.js'
 
 const props = defineProps({
   userId: {
@@ -62,22 +59,14 @@ const props = defineProps({
   },
 })
 
-const activeListItem = ref('users') // Default active item is "Users"
+const profilesStore = useProfilesStore()
 
-// Automatically set the default active item when `userId` changes
-watch(
-  () => props.userId,
-  (newUserId) => {
-    if (newUserId) {
-      activeListItem.value = 'todos' // Default active item is "Todos" when a profile card is clicked
-    } else {
-      activeListItem.value = 'users' // Reset to "Users" when no profile card is selected
-    }
-  }
-)
+// Computed property to track the active menu item
+const activeMenuItem = computed(() => profilesStore.activeMenuItem)
 
-const setActiveItem = (item) => {
-  activeListItem.value = item // Update the active item when a list item is clicked
+// Function to update the active menu item in the store
+const setActiveMenu = (menuItem) => {
+  profilesStore.setActiveMenuItem(menuItem)
 }
 </script>
 

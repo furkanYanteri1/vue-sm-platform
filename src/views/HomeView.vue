@@ -14,15 +14,19 @@ import Sidebar from '../components/Sidebar.vue'
 import ProfilesGrid from '../components/ProfilesGrid.vue'
 import TodosList from '../components/TodosList.vue'
 import { ref } from 'vue'
+import { useProfilesStore } from '../stores/profilesStore.js'
 
+const profilesStore = useProfilesStore()
 const selectedUserId = ref(null)
 
 const selectUser = (userId) => {
   selectedUserId.value = userId
+  profilesStore.setActiveMenuItem('Todos') // Set "Todos" as active by default
 }
 
 const goHome = () => {
-  selectedUserId.value = null // Reset the selected user to return to home view
+  selectedUserId.value = null
+  profilesStore.setActiveMenuItem('Users') // Reset to "Users" when going home
 }
 </script>
 
@@ -30,16 +34,16 @@ const goHome = () => {
 .home-container {
   display: flex;
   height: 100vh;
-  overflow: hidden; /* Prevents scrolling of the entire page */
+  overflow: hidden;
 }
 
 .sidebar {
-  flex-shrink: 0; /* Prevents the sidebar from shrinking */
+  flex-shrink: 0;
 }
 
 .content {
-  flex-grow: 1; /* Ensures the content takes up the remaining space */
-  overflow-y: auto; /* Enables scrolling for the right section */
-  height: 100%; /* Ensures the content area fills the full height */
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 100%;
 }
 </style>
