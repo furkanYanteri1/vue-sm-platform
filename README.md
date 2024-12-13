@@ -38,3 +38,7 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+# Branches
+### Main: Production environment
+### Workbenvh: Development environment
