@@ -1,9 +1,13 @@
 # vue-sm-project
 
 This repo contains the code of a vue project of a social media platform :)
-Please check the PR's for a better understanding of the development phase.
+<br/><br/>
+Please check the PR's for a better understanding of the development story.
+Latest PR is here: 
+https://github.com/furkanYanteri1/vue-sm-platform/pull/10
+
 ### Currently live here:
-furkanyanteri1.github.io/vue-sm-platform/
+https://wwww.furkanyanteri1.github.io/vue-sm-platform/
 
 ## Project Setup
 
@@ -23,13 +27,13 @@ npm run dev
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### Run Unit Tests
 
 ```sh
 npm run test:unit
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint with 
 
 ```sh
 npm run lint
