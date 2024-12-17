@@ -6,21 +6,17 @@ Please check the PR's for a better understanding of the development story.
 Latest PR is here: 
 https://github.com/furkanYanteri1/vue-sm-platform/pull/10
 
-### Currently live here:
-https://wwww.furkanyanteri1.github.io/vue-sm-platform/
+### Currently live here 👇
+https://furkanyanteri1.github.io/vue-sm-platform/
 
-## Project Setup
-
+### Project Setup
 ```sh
 npm install
 ```
-
 ### Compile and Hot-Reload for Development
-
 ```sh
 npm run dev
 ```
-
 ### Compile and Minify for Production
 
 ```sh
@@ -38,3 +34,7 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+# Branches
+### Main: Production environment
+### Workbenvh: Development environment

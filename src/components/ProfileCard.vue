@@ -71,6 +71,10 @@ const selectUser = () => {
   transition: box-shadow 0.2s ease;
   border: 1px solid #d8d9dd;
   cursor: pointer;
+  width: 100%;
+  min-width: 100px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .profile-card:hover {
