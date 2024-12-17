@@ -65,4 +65,16 @@ const emit = defineEmits(['userSelected'])
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
+
+@media (max-width: 1024px) {
+  .profiles-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .profiles-grid {
+    grid-template-columns: 1fr; /* 1 card per row for small screens */
+  }
+}
 </style>
