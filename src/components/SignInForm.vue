@@ -1,7 +1,18 @@
 <template>
   <form class="sign-in-form" @submit.prevent="handleSignIn">
     <label for="email">Email:</label>
-    <input id="email" v-model="email" type="email" required placeholder="Enter your email" />
+    <input
+      id="email"
+      v-model="email"
+      type="email"
+      :class="{ 'input-error': !isEmailValid && emailTouched }"
+      @blur="emailTouched = true"
+      required
+      placeholder="Enter your email"
+    />
+    <p v-if="!isEmailValid && emailTouched" class="error-message"
+      >Please enter a valid email address.</p
+    >
 
     <label for="password">Password:</label>
     <input
@@ -12,16 +23,27 @@
       placeholder="Enter your password"
     />
 
-    <button type="submit" class="sign-in-button">Sign In</button>
+    <button type="submit" class="sign-in-button" :disabled="!isFormValid">Sign In</button>
   </form>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const email = ref('')
 const password = ref('')
+const emailTouched = ref(false)
 
+// Email validation
+const isEmailValid = computed(() => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+  return emailRegex.test(email.value)
+})
+
+// Form validation
+const isFormValid = computed(() => isEmailValid.value && password.value.trim().length > 0)
+
+// Handle form submission
 const handleSignIn = () => {
   console.log('Sign-In Attempt:', { email: email.value, password: password.value })
 }
@@ -48,11 +70,22 @@ input {
   border-radius: 8px;
   font-size: 14px;
   width: 100%;
+  transition: border-color 0.3s;
 }
 
 input:focus {
   border-color: #4f359b;
   outline: none;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+  margin: -8px 0 8px 0;
 }
 
 .sign-in-button {
@@ -66,7 +99,12 @@ input:focus {
   transition: background-color 0.3s;
 }
 
-.sign-in-button:hover {
+.sign-in-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.sign-in-button:hover:not(:disabled) {
   background-color: #382980;
 }
 </style>
