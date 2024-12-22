@@ -19,9 +19,14 @@
       id="password"
       v-model="password"
       type="password"
+      :class="{ 'input-error': !isPasswordValid && passwordTouched }"
+      @blur="passwordTouched = true"
       required
       placeholder="Enter your password"
     />
+    <p v-if="!isPasswordValid && passwordTouched" class="error-message"
+      >Password must be at least 8 characters long.</p
+    >
 
     <button type="submit" class="sign-in-button" :disabled="!isFormValid">Sign In</button>
   </form>
@@ -33,15 +38,18 @@ import { ref, computed } from 'vue'
 const email = ref('')
 const password = ref('')
 const emailTouched = ref(false)
+const passwordTouched = ref(false)
 
-// Email validation
 const isEmailValid = computed(() => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
   return emailRegex.test(email.value)
 })
 
+// Password validation
+const isPasswordValid = computed(() => password.value.trim().length >= 8)
+
 // Form validation
-const isFormValid = computed(() => isEmailValid.value && password.value.trim().length > 0)
+const isFormValid = computed(() => isEmailValid.value && isPasswordValid.value)
 
 // Handle form submission
 const handleSignIn = () => {
