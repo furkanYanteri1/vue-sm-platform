@@ -43,7 +43,7 @@
 
     <div class="spacer"></div>
     <div class="sidebar-bottom">
-      <img src="/n2m-bottom.png" alt="N2Mobil Logo" />
+      <img src="/pp-bottom.png" alt="PulsePoint Logo" />
     </div>
   </div>
 </template>
