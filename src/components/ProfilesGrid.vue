@@ -1,6 +1,6 @@
 <template>
   <div class="profiles-grid-container">
-    <h2 class="header">All Users</h2>
+    <h2 class="header" @click="signInRouteTest">All Userss</h2>
     <div class="profiles-grid">
       <ProfileCard
         v-for="user in users"
@@ -23,6 +23,7 @@
 import { computed, onMounted } from 'vue'
 import ProfileCard from '../components/ProfileCard.vue'
 import { useProfilesStore } from '../stores/profilesStore.js'
+import router from '@/router'
 
 const profilesStore = useProfilesStore()
 // Computed property for users from the store
@@ -37,6 +38,10 @@ onMounted(() => {
 const handleUserSelected = (userId) => {
   // Emit event to the parent
   emit('userSelected', userId)
+}
+const signInRouteTest = () => {
+  alert('here')
+  router.push('/sign-in')
 }
 
 const emit = defineEmits(['userSelected'])
